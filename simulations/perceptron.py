@@ -5,9 +5,9 @@ from matplotlib.animation import FuncAnimation
 
 # %%
 # Genera dos clases linealmente separables
-np.random.seed(0)
-X1 = np.random.randn(50, 2) + np.array([1, 1])
-X2 = np.random.randn(50, 2) + np.array([-1, -1])
+np.random.seed(43)
+X1 = np.random.randn(50, 2) + np.array([1.5, 1.5])
+X2 = np.random.randn(50, 2) + np.array([-1.5, -1.5])
 X = np.vstack([X1, X2])
 y = np.array([1]*50 + [0]*50)
 
@@ -18,10 +18,10 @@ def step(x):
 
 # %%
 # Inicializar pesos y sesgo
-w = np.random.rand(2)
+w = np.zeros(2)
 b = np.random.rand()
 # Tasa de aprendizaje
-eta = 1
+eta = 0.5
 
 # %%
 # Fotogramas para la visualizacion
@@ -61,6 +61,6 @@ def update(frame):
         line.set_data([], [])
     return line,
 
-ani = FuncAnimation(fig, update, frames=frames, interval=33, repeat=False)
+ani = FuncAnimation(fig, update, frames=frames, interval=100, repeat=False)
 plt.show()
 # %%
